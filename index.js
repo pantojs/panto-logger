@@ -50,7 +50,7 @@ const formatArg = arg => {
     const typeOf = typeof arg;
 
     if (undefined === arg || null === arg) {
-        arg = ''
+        arg = '';
     } else if ('string' === typeOf || (arg && arg.constructor === String)) {
         str = arg;
     } else if ('function' === typeOf || arg.constructor === RegExp) {
