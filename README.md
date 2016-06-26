@@ -1,5 +1,5 @@
 # panto-logger
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url]
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url]
 
 Logger for panto.
 
@@ -24,6 +24,8 @@ error('record error message').then(()=>{
 [npm-url]: https://npmjs.org/package/panto-logger
 [downloads-image]: http://img.shields.io/npm/dm/panto-logger.svg
 [npm-image]: http://img.shields.io/npm/v/panto-logger.svg
+[travis-url]: https://travis-ci.org/pantojs/panto-logger
+[travis-image]: http://img.shields.io/travis/pantojs/panto-logger.svg
 [david-dm-url]:https://david-dm.org/pantojs/panto-logger
 [david-dm-image]:https://david-dm.org/pantojs/panto-logger.svg
 [david-dm-dev-url]:https://david-dm.org/pantojs/panto-logger#info=devDependencies

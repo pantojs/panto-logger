@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2016 yanni4night.com
+ * Copyright (C) 2016 pantojs.xyz
  * test.js
  *
  * changelog
@@ -33,6 +33,35 @@ describe('logger', () => {
         });
         it('should print error message', () => {
             logger.error('This is a error message', '=>', 'Hello, Artiaris');
+        });
+    });
+    describe('log multiple types', () => {
+        it('print null&undefined', () => {
+            logger.info(null);
+            logger.info(undefined);
+        });
+        it('print function&regexp', () => {
+            logger.info(function fn() {});
+            logger.info(/pantojs/);
+        });
+        it('print error', () => {
+            logger.info(new TypeError('this is type error'));
+        });
+        it('print number&boolean', () => {
+            logger.info(0x0810);
+            logger.info(false);
+        });
+        it('print date', () => {
+            logger.info(new Date());
+        });
+        it('print array', () => {
+            logger.info(['str', 0x0810, false, [1, 2], new Date()]);
+        });
+        it('print object', () => {
+            logger.info({
+                name: 'Jake',
+                age: 29
+            });
         });
     });
     describe('#setLevel', () => {

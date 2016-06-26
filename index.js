@@ -4,10 +4,11 @@
  *
  * changelog
  * 2016-06-22[16:23:45]:revised
+ * 2016-06-26[18:58:58]:support multiple message types
  *
  * @author yanni4night@gmail.com
- * @version 1.0.0
- * @since 1.0.0
+ * @version 0.2.0
+ * @since 0.1.0
  */
 'use strict';
 const colors = require('colors/safe');
@@ -44,16 +45,47 @@ exports.setOutStream = stream => {
     currentOutStream = stream;
 };
 
+const formatArg = arg => {
+    let str = '';
+    const typeOf = typeof arg;
+
+    if (undefined === arg || null === arg) {
+        arg = ''
+    } else if ('string' === typeOf || (arg && arg.constructor === String)) {
+        str = arg;
+    } else if ('function' === typeOf || arg.constructor === RegExp) {
+        str = arg.toString();
+    } else if (Array.isArray(arg)) {
+        str = '[' + arg.map(formatArg).join() + ']';
+    } else if (arg instanceof Error) {
+        str = arg.stack;
+    } else if ('number' === typeOf || 'boolean' === typeOf || arg.constructor === Number || arg.constructor ===
+        Boolean) {
+        str = String(arg);
+    } else if (arg.constructor === Date) {
+        str = arg.toLocaleString();
+    } else if ('object' === typeOf) {
+        try {
+            str = JSON.stringify(arg, null, 4);
+        } catch (e) {
+            str = String(arg);
+        }
+    }
+
+    return str;
+};
+
 functions.forEach(func => {
     exports[func] = (...args) => {
+        const printFn = stopColor ? noop : colors[func];
+        const tag = func[0].toUpperCase();
+        const time = new Date().toISOString();
         return new Promise((resolve, reject) => {
             if (functions.indexOf(func) >= functions.indexOf(currentLevel)) {
-                currentOutStream.write((stopColor ? noop : colors[func])(
-                    `[${new Date().toISOString()}][${func[0].toUpperCase()}]`) + args.map((
-                    stopColor ? noop : colors[func])).join(
-                    ' ') + '\n', 'utf-8', () => {
-                    resolve();
-                });
+                currentOutStream.write(printFn(`[${time}][${tag}]` + args.map(formatArg).join(' ')) + '\n',
+                    'utf-8', () => {
+                        resolve();
+                    });
             } else {
                 reject(new Error(`${func} < ${currentLevel}`));
             }
