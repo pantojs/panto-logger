@@ -1,19 +1,14 @@
 {
   "name": "panto-logger",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Logger for panto",
   "main": "index.js",
   "dependencies": {
     "colors": "^1.1.2"
   },
-  "devDependencies": {
-    "eslint": "^2.13.1",
-    "mocha": "^2.5.3"
-  },
+  "devDependencies": {},
   "scripts": {
-    "eslint": "./node_modules/.bin/eslint index.js",
-    "mocha": "./node_modules/.bin/mocha",
-    "test": "npm run eslint && npm run mocha"
+    "test": "eslint index.js && mocha"
   },
   "repository": {
     "type": "git",

@@ -4,10 +4,11 @@
  *
  * changelog
  * 2016-06-16[13:20:09]:revised
+ * 2016-07-05[22:00:00]:support Buffer
  *
  * @author yanni4night@gmail.com
- * @version 1.0.0
- * @since 1.0.0
+ * @version 0.2.1
+ * @since 0.1.0
  */
 'use strict';
 const logger = require('../');
@@ -45,23 +46,26 @@ describe('logger', () => {
             logger.info(/pantojs/);
         });
         it('print error', () => {
-            logger.info(new TypeError('this is type error'));
+            logger.error(new TypeError('this is type error'));
         });
         it('print number&boolean', () => {
             logger.info(0x0810);
             logger.info(false);
         });
         it('print date', () => {
-            logger.info(new Date());
+            logger.debug(new Date());
         });
         it('print array', () => {
-            logger.info(['str', 0x0810, false, [1, 2], new Date()]);
+            logger.data(['str', 0x0810, false, [1, 2], new Date()]);
         });
         it('print object', () => {
             logger.info({
                 name: 'Jake',
                 age: 29
             });
+        });
+        it('print Buffer', () => {
+            logger.info(new Buffer('This is the buffer to be printed'));
         });
     });
     describe('#setLevel', () => {

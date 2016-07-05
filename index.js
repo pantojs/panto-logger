@@ -5,9 +5,10 @@
  * changelog
  * 2016-06-22[16:23:45]:revised
  * 2016-06-26[18:58:58]:support multiple message types
+ * 2016-07-05[22:00:42]:support Buffer
  *
  * @author yanni4night@gmail.com
- * @version 0.2.0
+ * @version 0.2.1
  * @since 0.1.0
  */
 'use strict';
@@ -64,6 +65,8 @@ const formatArg = arg => {
         str = String(arg);
     } else if (arg.constructor === Date) {
         str = arg.toLocaleString();
+    } else if (Buffer.isBuffer(arg)) {
+        str += '<Buffer ' + Array.prototype.join.call(arg.slice(0,10), ' ') + (arg.length>10?'...':'') + '>';
     } else if ('object' === typeOf) {
         try {
             str = JSON.stringify(arg, null, 4);
