@@ -6,9 +6,10 @@
  * 2016-06-22[16:23:45]:revised
  * 2016-06-26[18:58:58]:support multiple message types
  * 2016-07-05[22:00:42]:support Buffer
+ * 2016-07-30[11:10:40]:default "error"
  *
  * @author yanni4night@gmail.com
- * @version 0.2.1
+ * @version 0.2.2
  * @since 0.1.0
  */
 'use strict';
@@ -40,7 +41,7 @@ const setLevel = exports.setLevel = level => {
     return currentLevel;
 };
 
-setLevel(process.env.PANTO_LOG_LEVEL);
+setLevel(process.env.PANTO_LOG_LEVEL || 'error');
 
 exports.setOutStream = stream => {
     currentOutStream = stream;
