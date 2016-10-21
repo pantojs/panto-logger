@@ -1,6 +1,6 @@
 {
   "name": "panto-logger",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Logger for panto",
   "main": "index.js",
   "dependencies": {

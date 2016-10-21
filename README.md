@@ -28,5 +28,5 @@ error('record error message').then(()=>{
 [travis-image]: http://img.shields.io/travis/pantojs/panto-logger.svg
 [david-dm-url]:https://david-dm.org/pantojs/panto-logger
 [david-dm-image]:https://david-dm.org/pantojs/panto-logger.svg
-[david-dm-dev-url]:https://david-dm.org/pantojs/panto-logger#info=devDependencies
+[david-dm-dev-url]:https://david-dm.org/pantojs/panto-logger#type=dev
 [david-dm-dev-image]:https://david-dm.org/pantojs/panto-logger/dev-status.svg

@@ -9,7 +9,7 @@
  * 2016-07-30[11:10:40]:default "error"
  *
  * @author yanni4night@gmail.com
- * @version 0.2.2
+ * @version 0.2.3
  * @since 0.1.0
  */
 'use strict';
@@ -84,14 +84,12 @@ functions.forEach(func => {
         const printFn = stopColor ? noop : colors[func];
         const tag = func[0].toUpperCase();
         const time = new Date().toISOString();
-        return new Promise((resolve, reject) => {
+        return new Promise(resolve => {
             if (functions.indexOf(func) >= functions.indexOf(currentLevel)) {
                 currentOutStream.write(printFn(`[${time}][${tag}]` + args.map(formatArg).join(' ')) + '\n',
                     'utf-8', () => {
                         resolve();
                     });
-            } else {
-                reject(new Error(`${func} < ${currentLevel}`));
             }
         });
     };
